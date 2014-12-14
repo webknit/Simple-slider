@@ -1,0 +1,64 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,th,var{font-style:normal;font-weight:normal;}ol,ul{list-style:none;}caption,th{text-align:left;}q:before,q:after{content:'';}abbr,acronym{border:0;}
+
+img {
+	height: auto;
+	max-width: 100%;
+}
+
+.main-body {
+	margin: 0 auto;
+	max-width: 600px;
+}
+
+.slideshow__mask { 
+	float:left; 
+	height:450px;
+	margin: 0 auto 2em;
+	overflow:hidden;
+	width:600px;  
+}
+
+.slideshow__images {
+	left:0px;
+	position:relative;
+	top:0px; 
+}
+
+.slideshow__images li { 
+	float:left; 
+}
+
+.slideshow__pagination { 
+	display: block;
+}
+
+.slideshow__pagination li { 
+	background: red;
+	color: white;
+	cursor:pointer;
+    float:left; 
+    margin:0 5px;   
+    padding:10px;
+}
+
+.slideshow__pagination li.active {
+	background-color:red; 
+	color:#000;
+}
+
+.slideshow__control {
+	background: red;
+	color: white;
+	cursor:pointer;
+	display: inline-block;
+	margin: 0 5px;
+	padding: 10px;
+}
+
+.slideshow__control--prev { 
+	left:120px; 
+}
+
+.slideshow__control--next { 
+	left:180px; 
+}

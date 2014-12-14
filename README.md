@@ -1,4 +1,4 @@
 Simple-slider
 =============
 
-A simple JS slideshow
+A simple JS slider
