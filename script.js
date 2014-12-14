@@ -27,6 +27,7 @@ Base.functionName = function() {
 	function init() {
 
 		// Make the first pagination active
+		images.first().addClass('active');
 		pagination.first().addClass('active');
 		
 		// We need to calculate the width of all the slides and apply to the ul
@@ -51,9 +52,15 @@ Base.functionName = function() {
 		// stop() stop animation, then we reanimate it to the left position we want
 	    mask.stop(true,false).animate({'left':'-'+ imgWidth * slideChoice +'px'},600);
 	    
+	    // Sort active states on images
+	    images.removeClass('active').eq(slideChoice).addClass('active');
+	    
 	    // Remove active states on the pagination
 	    // eq() selects the correct pagination eg if slideChoice == 2 the 3rd pagingation addClass
 	    pagination.removeClass('active').eq(slideChoice).addClass('active');
+	    
+	    // reset the time again
+	    resetTime();
 	    
 	}
 	
@@ -78,7 +85,7 @@ Base.functionName = function() {
 	function slidePrev() {
 	
 		// Need to find the currectly active slide 
-		slideChoice = $('.slideshow__pagination li.active').index();
+		slideChoice = $('.slideshow__slideli.active').index();
 		
 		// If we're already at the bottom we need to ensure we're going to the top next
 		if(slideChoice === 0) {
@@ -96,9 +103,6 @@ Base.functionName = function() {
 		
 		// Move the slider
 	    moveSlider(slideChoice);
-	    
-	    // reset the time again
-	    resetTime();
 	
 	}
 	
@@ -106,7 +110,7 @@ Base.functionName = function() {
 	function slideNext() {
 	
 		// Need to find the currectly active slide 
-		slideChoice = $('.slideshow__pagination li.active').index();
+		slideChoice = $('.slideshow__slideli.active').index();
 		
 		// If we're already at the top we need to ensure we're going to the start next
 		if(slideChoice === lastElem) {
@@ -124,9 +128,6 @@ Base.functionName = function() {
 		
 		// Move the slider
 	    moveSlider(slideChoice);
-	    
-	    // reset the time again
-	    resetTime();
 		
 	}
 	
