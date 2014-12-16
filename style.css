@@ -8,14 +8,13 @@ img {
 .main-body {
 	margin: 0 auto;
 	max-width: 600px;
+	width: 100%;
 }
 
 .slideshow__mask { 
 	float:left; 
-	height:450px;
 	margin: 0 auto 2em;
-	overflow:hidden;
-	width:600px;  
+	overflow: hidden; 
 }
 
 .slideshow__images {

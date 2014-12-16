@@ -4,7 +4,13 @@ Base.functionName = function() {
 	
 	// Our Variables 
 	
+	// The slideshow
+	var slideShow = $('.slideshow');
+	var slideShowWidth = slideShow.width();
+	var slideShowHeight = slideShow.height();
 	// The slideshow mask
+	var slideshowMask = $('.slideshow__mask');
+	// The slideshow ul
 	var mask = $('.slideshow__images');
 	// The slider lis
 	var images = $('.slideshow__slideli')
@@ -22,6 +28,8 @@ Base.functionName = function() {
 	var slideChoice;
 	// The setInterval for the slider
 	var sliderRun
+	// Number of slides
+	var numSlides;
 
 	// Call the functions
 	function init() {
@@ -29,11 +37,12 @@ Base.functionName = function() {
 		// Make the first pagination active
 		images.first().addClass('active');
 		pagination.first().addClass('active');
+		checkSize();
 		
 		// We need to calculate the width of all the slides and apply to the ul
 		// Add the extra one on againt o find true value
 		// E.g 600 x 5 = 3000px
-		mask.css('width', imgWidth * (lastElem + 1) +'px');
+		mask.css('width', slideShowWidth * (lastElem + 1) +'px');
 		
 		pagination.click(paginationAction);
 		slideNextBtn.click(slideNext);
@@ -41,16 +50,43 @@ Base.functionName = function() {
 		
 		// Start the slider
 		sliderRun = setInterval(slideNext, 5000);
+		
+		var $window = $(window);
+		// Each time the user resized the window call this
+		$window.resize(function () {
+		
+			var id;
+		
+			// Reset the timeout
+			clearTimeout(id);
+			
+			// Call the function after it has stopped being resized
+			id = setTimeout(checkSize, 500);
+			
+		});
 
+	}
+	
+	function checkSize() {
+	
+		// Check if width has changed
+		slideShowWidth = slideShow.width();
+	
+		// Update the css widths
+		slideshowMask.css('width', slideShowWidth);
+		images.css('width', slideShowWidth);
+		
+		moveSlider(0);
+		
 	}
 	
 	function moveSlider(slideChoice) {
 	
 		// This tells us how far we want the css left negative position to be
-		var slidePos = imgWidth * slideChoice;
+		var slidePos = slideShowWidth * slideChoice;
 	
 		// stop() stop animation, then we reanimate it to the left position we want
-	    mask.stop(true,false).animate({'left':'-'+ imgWidth * slideChoice +'px'},600);
+	    mask.stop(true,false).animate({'left':'-'+ slideShowWidth * slideChoice +'px'},600);
 	    
 	    // Sort active states on images
 	    images.removeClass('active').eq(slideChoice).addClass('active');
